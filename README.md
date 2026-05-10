@@ -10,52 +10,9 @@ The full writeup is included here:
 
 [PromptGuidedStyleTransfer.pdf](PromptGuidedStyleTransfer.pdf)
 
-## 📦 Technologies
-
-- Python
-- PyTorch
-- Hugging Face Diffusers
-- Transformers
-- Stable Diffusion / InstructPix2Pix
-- CLIP, DINO, LPIPS
-- Weights & Biases
-- AWS GPU training
-
-## 🦄 What This Project Does
-
-### 🖼️ Prompt-Guided Image Editing
-
-Given a source image and an edit prompt, the model tries to generate a styled output while preserving the structure/content of the original image.
-
-Example:
-
-```text
-source image + "turn this into a watercolor painting" → styled output image
-```
-
-### 🧪 Multiple Model Variants
-
-The project compares different image-editing approaches:
-
-- **Baseline:** InstructPix2Pix-style editing
-- **Latent Diffusion:** noise prediction in latent space
-- **Latent Flow Matching:** velocity prediction in latent space
-- **Style-Content Decoupling:** separates content and style directions more explicitly
-
-### 📊 Evaluation Pipeline
-
-The evaluation script generates outputs, saves comparison grids, and reports metrics for style alignment and content preservation.
-
-Main metrics:
-
-- CLIP text similarity for prompt alignment
-- CLIP image similarity for style/source-output similarity
-- DINO similarity for content preservation
-- LPIPS distance for perceptual change
-
 ## 🚦 How to Run
 
-This project was originally trained on an AWS GPU setup, so some default paths in the scripts point to the original EC2 environment. To run it somewhere else, update the dataset, model, and output paths in the commands below.
+This project was originally trained on an AWS GPU setup, so some paths may need to be updated if you run it locally or on a new machine.
 
 ### 1. Clone the repo
 
@@ -72,7 +29,7 @@ pip install -r requirements.txt
 
 ### 3. Prepare the data
 
-The scripts expect a metadata CSV with source images, target images, prompts, style labels, and split labels.
+The training and evaluation scripts expect a metadata CSV with source images, target images, prompts, style labels, and split labels.
 
 Example columns:
 
@@ -109,11 +66,55 @@ python src/eval.py \
 
 Evaluation outputs include generated images, comparison grids, metric CSVs, and summary results.
 
+## 📦 Technologies
+
+- Python
+- PyTorch
+- Hugging Face Diffusers
+- Transformers
+- Stable Diffusion / InstructPix2Pix
+- CLIP, DINO, LPIPS
+- Weights & Biases
+- AWS GPU training
+
+## 🦄 What This Project Does
+
+### 🖼️ Prompt-Guided Image Editing
+
+Given a source image and an edit prompt, the model tries to generate a styled output while preserving the structure and content of the original image.
+
+Example:
+
+```text
+source image + "turn this into a watercolor painting" → styled output image
+```
+
+### 🧪 Multiple Model Variants
+
+The project compares different image-editing approaches:
+
+- **Baseline:** InstructPix2Pix-style editing
+- **Latent Diffusion:** noise prediction in latent space
+- **Latent Flow Matching:** velocity prediction in latent space
+- **Style-Content Decoupling:** separates content and style directions more explicitly
+
+### 📊 Evaluation Pipeline
+
+The evaluation script generates outputs, saves comparison grids, and reports metrics for style alignment and content preservation.
+
+Main metrics:
+
+- CLIP text similarity for prompt alignment
+- CLIP image similarity for style/source-output similarity
+- DINO similarity for content preservation
+- LPIPS distance for perceptual change
+
 ## 🧠 Project Structure
 
 ```text
 Prompt-Guided-Style-Transfer-GenAI/
 ├── README.md
+├── requirements.txt
 ├── LICENSE
 ├── PromptGuidedStyleTransfer.pdf
 └── src/
