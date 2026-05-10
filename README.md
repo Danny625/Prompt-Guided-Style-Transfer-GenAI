@@ -4,6 +4,18 @@ A GenAI image-editing project for prompt-guided style transfer.
 
 The goal was to take a source image and a text prompt, then generate an edited image that keeps the original content while applying the requested style. I built this as a research-style ML project to compare a few latent-space image editing approaches, including diffusion, flow matching, and style-content decoupling.
 
+## 🖼️ Project Overview
+
+This project takes a source image and a style prompt, then generates a stylized output while trying to preserve the original content.
+
+![Project overview](examples/project_overview.png)
+
+## 🍿 Example Output
+
+Here is one qualitative comparison from the project. The top row shows the source image, baseline, and target. The other images show outputs from different model variants on the same prompt.
+
+![Qualitative comparison](examples/qualitative_comparison.png)
+
 ## 📄 Final Report
 
 The full writeup is included here:
@@ -117,6 +129,9 @@ Prompt-Guided-Style-Transfer-GenAI/
 ├── requirements.txt
 ├── LICENSE
 ├── PromptGuidedStyleTransfer.pdf
+├── examples/
+│   ├── project_overview.png
+│   └── qualitative_comparison.png
 └── src/
     ├── train.py          # Main training script
     ├── eval.py           # Evaluation and metric reporting
@@ -159,7 +174,7 @@ The hardest part was balancing style transfer with content preservation. If the 
 If I were continuing this project, I would probably:
 
 - Add a small sample dataset or example metadata file
-- Add example outputs directly in the README
+- Add more example outputs directly in the README
 - Make paths less tied to the original AWS/EC2 setup
 - Add a simple one-image inference script
 - Add a cleaner config system for training and evaluation
