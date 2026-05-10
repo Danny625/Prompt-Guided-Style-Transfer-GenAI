@@ -1,0 +1,16 @@
+torch
+torchvision
+diffusers
+transformers
+accelerate
+Pillow
+numpy
+pandas
+tqdm
+scikit-learn
+matplotlib
+wandb
+lpips
+torchmetrics
+timm
+opencv-python
